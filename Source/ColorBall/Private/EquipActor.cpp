@@ -51,6 +51,7 @@ AEquipActor::AEquipActor()
 		MaterialEquip.Items.Add(FEquipItem(TEXT("レッド"), TEXT("/Script/Engine.Material'/Game/Materials/M_Red.M_Red'")));
 		MaterialEquip.Items.Add(FEquipItem(TEXT("グリーン"), TEXT("/Script/Engine.Material'/Game/Materials/M_Green.M_Green'")));
 		MaterialEquip.Items.Add(FEquipItem(TEXT("ブルー"), TEXT("/Script/Engine.Material'/Game/Materials/M_Blue.M_Blue'")));
+		MaterialEquip.Items.Add(FEquipItem(TEXT("イエロー"), TEXT("/Script/Engine.Material'/Game/Materials/M_Yellow.M_Yellow'")));
 	}
 }
 
