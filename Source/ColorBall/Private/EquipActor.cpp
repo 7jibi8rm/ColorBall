@@ -181,7 +181,7 @@ void AEquipActor::ImGuiTick()
 	ImGui::Begin("装備メニュー");
 
 	{
-		const FString Title = TEXT("砲台レイアウト");
+		const FString Title = TEXT("砲台レイアウト（１キー）");
 		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), TCHAR_TO_UTF8(*Title));
 		ImGui::BeginChild(TCHAR_TO_UTF8(*Title), ImVec2(280, 60), true);
 		const auto& EquipItems = SelectableEquips[static_cast<int32>(EEquipIndex::Muzzle)];
@@ -191,7 +191,7 @@ void AEquipActor::ImGuiTick()
 	}
 
 	{
-		const FString Title = TEXT("発射システム");
+		const FString Title = TEXT("発射システム（２キー）");
 		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), TCHAR_TO_UTF8(*Title));
 		ImGui::BeginChild(TCHAR_TO_UTF8(*Title), ImVec2(280, 60), true);
 		const auto& EquipItems = SelectableEquips[static_cast<int32>(EEquipIndex::Repeater)];
@@ -201,7 +201,7 @@ void AEquipActor::ImGuiTick()
 	}
 
 	{
-		const FString Title = TEXT("給弾システム");
+		const FString Title = TEXT("給弾システム（３キー）");
 		ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), TCHAR_TO_UTF8(*Title));
 		ImGui::BeginChild(TCHAR_TO_UTF8(*Title), ImVec2(280, 60), true);
 		const auto& EquipItems = SelectableEquips[static_cast<int32>(EEquipIndex::Supplier)];
@@ -211,13 +211,60 @@ void AEquipActor::ImGuiTick()
 	}
 
 	{
-		const FString Title = TEXT("ボールタイプ");
+		const FString Title = TEXT("ボールタイプ（４キー）");
 		ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), TCHAR_TO_UTF8(*Title));
 		ImGui::BeginChild(TCHAR_TO_UTF8(*Title), ImVec2(280, 60), true);
 		const auto& EquipItems = SelectableEquips[static_cast<int32>(EEquipIndex::Material)];
 		ImGui::Text("名前: %s", TCHAR_TO_UTF8(*EquipItems.Items[EquipItems.CurrentIndex].Name));
 		ImGui::Text("解説: %s", TCHAR_TO_UTF8(*EquipItems.Items[EquipItems.CurrentIndex].Explain));
 		ImGui::EndChild();
+	}
+	ImGui::End();
+
+
+	// ImGuiウィンドウサイズを一度だけ設定
+	ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_Once);
+	ImGui::SetNextWindowPos(ImVec2(10, 440), ImGuiCond_Once);
+
+	ImGui::Begin("操作方法");
+
+	if (ImGui::BeginTable("Table1", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
+	{
+		ImGui::TableSetupColumn("キー");
+		ImGui::TableSetupColumn("イベント");
+		ImGui::TableHeadersRow();
+
+		ImGui::TableNextRow();
+		ImGui::TableSetColumnIndex(0);
+		ImGui::Text("A W S D");
+		ImGui::TableSetColumnIndex(1);
+		ImGui::Text("プレイヤーの移動");
+
+		ImGui::TableNextRow();
+		ImGui::TableSetColumnIndex(0);
+		ImGui::Text("マウス");
+		ImGui::TableSetColumnIndex(1);
+		ImGui::Text("カメラの移動");
+
+		ImGui::TableNextRow();
+		ImGui::TableSetColumnIndex(0);
+		ImGui::Text("Z");
+		ImGui::TableSetColumnIndex(1);
+		ImGui::Text("ボールの発射");
+
+		ImGui::TableNextRow();
+		ImGui::TableSetColumnIndex(0);
+		ImGui::Text("1 2 3 4");
+		ImGui::TableSetColumnIndex(1);
+		ImGui::Text("装備の変更");
+
+		ImGui::TableNextRow();
+		ImGui::TableSetColumnIndex(0);
+		ImGui::Text("5");
+		ImGui::TableSetColumnIndex(1);
+		ImGui::Text("装備をランダム設定");
+
+		ImGui::EndTable();
 	}
 	ImGui::End();
 }
