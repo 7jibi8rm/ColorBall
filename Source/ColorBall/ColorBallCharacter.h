@@ -163,8 +163,10 @@ private:
 	UInputAction* FireAction;
 
 	// ShooterComponent：射撃機能を管理するコンポーネント。
-	UShooterComponent* ShooterComponent{};
+    UPROPERTY()
+	TObjectPtr<UShooterComponent> ShooterComponent{};
 
 	// EquipActor：メニュー操作用アクター。
-	AEquipActor* EquipActor{};
+	UPROPERTY()
+	TObjectPtr<AEquipActor> EquipActor{};
 };

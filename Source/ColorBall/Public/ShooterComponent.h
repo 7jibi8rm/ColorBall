@@ -117,5 +117,6 @@ private:
 	TSubclassOf<AActor> BulletClass{};
 
 	// 選択中の弾薬マテリアル
-	UMaterialInterface* SelectedMaterial{};
+    UPROPERTY()
+	TObjectPtr<UMaterialInterface> SelectedMaterial{};
 };
